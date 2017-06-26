@@ -1,17 +1,18 @@
-function Obstacle() {
-  this.y = 0;
+function Obstacle(id) {
+  this.y = this.generateObstacle();//aqui generateObstacle
   this.x = 0;
-  this.speed = 0;
-  //position Y, position X(random), this.speed
+  this.addObstacle(id);
 }
-  // console.log(this);
+// console.log(this);
 
+Obstacle.prototype.addObstacle = function(id) {
+  var newObstacle = $("<div></div>").addClass("object").attr('id', 'obstacle'+id).css({
+    top: this.x,
+    left: this.y
+  });
+  $("#first-road").append(newObstacle);
+};
 
 Obstacle.prototype.generateObstacle = function() {
-  this.y = $(".object").position().left;
-  this.x = $(".object").position().top;
-  $(".object").css({
-    left: y = Math.floor((Math.random()*560)+78),
-    top: x = -100
-  });
+return Math.floor((Math.random() * 560) + 78);
 };
