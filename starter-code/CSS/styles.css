@@ -1,3 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Frijole');
+
 body{
-  background-color: blue;
+  margin: 0;
+  background-image: url(../images/background.jpg);
 }
+
+h1{
+  color: #004466;
+  font-size: 45px;
+  font-family: "Frijole";
+  text-align: center;
+  background-color: white;
+}
+
+.road{
+  height: 880px;
+  width: 100%;
+  background-image: url("../images/dirt-road.jpg");
+  background-size: cover;
+  background-position: center;
+  margin: 0px 0px;
+  border: 3px black solid;
+  float: left;
+  display: inline-block;
+}
+
+.user-bike{
+  width: 120px;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+}
+
+.object{
+  background-color: blue;
+  height: 80px;
+  width: 80px;
+  position: absolute;
+}
+
+/*.rocket{
+  background-image: url("../images/rocket.png");
+  background-size: cover;
+  width: 150px;
+  height: 150px;
+  border: 1px solid darkgray;
+}*/
