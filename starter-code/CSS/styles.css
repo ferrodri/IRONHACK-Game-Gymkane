@@ -3,6 +3,7 @@
 body{
   margin: 0;
   background-image: url(../images/background.jpg);
+  background-size: cover;
 }
 
 h1{
@@ -11,6 +12,9 @@ h1{
   font-family: "Frijole";
   text-align: center;
   background-color: white;
+}
+.col-xs-6 {
+  overflow: hidden;
 }
 
 .road{
@@ -30,10 +34,10 @@ h1{
   height: auto;
   position: absolute;
   bottom: 0;
+
 }
 
 .object{
-  background-color: blue;
   height: 80px;
   width: 80px;
   position: absolute;

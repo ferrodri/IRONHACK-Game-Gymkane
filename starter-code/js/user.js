@@ -19,11 +19,13 @@ User.prototype.firstUser = function() {
     this.y = $("#first-user").position().left;
     if (event.keyCode == 65 && this.y>78) {
       $("#first-user").css({
-        left: this.y -= 20 //left//
+        "transition": "left 0.1s linear", //importante!! cada 0.2s te va a llevar a tu left de manera lineal, es decir, si tu pulsas la tecla para left 10 veces en 0,2s hará esa transicion entre 0 y 200px//
+        left: this.y -= 40 //left//
       });
-    }else if(event.keyCode == 83 && this.y<638) {
+    }else if(event.keyCode == 83 && this.y<598) {
       $("#first-user").css({
-        left: this.y += 20 //right//
+        "transition": "left 0.1s linear",
+        left: this.y += 40 //right//
       });
     }
   });
@@ -34,16 +36,18 @@ User.prototype.secondUser = function() {
     this.z = $("#second-user").position().left;
     if (event.keyCode == 37 && this.z>78) {
       $("#second-user").css({
-        left: this.z -= 20 //left//
+        "transition": "left 0.1s linear",
+        left: this.z -= 40 //left//
       });
-    }else if(event.keyCode == 39 && this.z<638) {
+    }else if(event.keyCode == 39 && this.z<598) {
       $("#second-user").css({
-        left: this.z += 20 //right//
+        "transition": "left 0.1s linear",
+        left: this.z += 40 //right//
       });
     }
   });
 };
-// 
+//
 // User.protoype.user = function() {
 //
 // }
