@@ -31,16 +31,17 @@ h1{
 
 .user-bike{
   width: 170px;
-  height: auto;
+  height: auto; /*height = 128px*/
   position: absolute;
   bottom: 0;
-
+  z-index: 2;
 }
 
 .object{
   height: 80px;
   width: 80px;
   position: absolute;
+  z-index: 1;
 }
 
 /*.rocket{

@@ -21,4 +21,6 @@ Obstacle.prototype.addObstacle = function(id, road) {
     left: this.y
   });
   $(road).append(newObstacle);
+  // console.log("hola");
+  // this.obstacleHit();
 };
