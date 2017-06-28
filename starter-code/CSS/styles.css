@@ -43,11 +43,3 @@ h1{
   position: absolute;
   z-index: 1;
 }
-
-/*.rocket{
-  background-image: url("../images/rocket.png");
-  background-size: cover;
-  width: 150px;
-  height: 150px;
-  border: 1px solid darkgray;
-}*/

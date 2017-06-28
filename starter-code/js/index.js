@@ -1,7 +1,7 @@
 var user = new User();
 var game = new Game();
-var firstRoad = "#first-road ";
-var secondRoad = "#second-road ";
+var firstRoad = "first-road";
+var secondRoad = "second-road";
 // var backgroundClass = ["rocket", "ice", "blackroad", "stairs", "mud", "stop"];
 // preguntar duda si puedo poner background-class aquí para así acceder desde dos prototypes
 //importante lo de arriba
@@ -34,12 +34,11 @@ Game.prototype.renderSecondUser = function() {
 };
 
 Game.prototype.createObstacles = function(road, speedBoard, obstacleId) {
+  var that = this;
   var createObstaclesInterval = setInterval(function() {
     obstacleId++;
     var obstacle = new Obstacle(obstacleId, road);
-
-this.obstacleHit(); //¿por qué no sale??????
-
+    that.obstacleHit(); //¿por qué no sale??????
   }, speedBoard);
 };
 
@@ -49,7 +48,7 @@ Game.prototype.moveObstacle = function(road, speedObstacles) {
     var obstacleArray = document.querySelectorAll(road + ".object");
     for (i = 0; i < obstacleArray.length; i++) {
       var selector = obstacleArray[i].id.toString();
-      x = $(road + "#" + selector).position().top;
+      x = $("#"+road + " #" + selector).position().top;
       $(road + "#" + selector).css({
         top: x += 10
       });
