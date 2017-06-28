@@ -1,32 +1,36 @@
-function Obstacle(id, road) {
-  this.y = this.generateObstacle();//aqui generateObstacle
-  this.x = -80;
-  this.background = ['url("./images/rocket.png")','url("./images/ice.jpg")','url("./images/road.png")','url("./images/stairs.png")','url("./images/mud.jpg")','url("./images/stop.jpg")'];
-  this.addObstacle(id, road);
-  this.assignClass();
+function Obstacle(roadWidth, roadHeight, road) {
+  this.width = roadWidth / 11;
+  this.height = roadHeight / 11;
+  this.road = road;
+  this.element = this.createObstacle();
+  this.x = Math.floor((Math.random() * 600));
+  this.y = -this.height;
+  this.ySpeed = 100/30;
 }
 
-Obstacle.prototype.assignClass = function(){
+Obstacle.prototype.createObstacle = function() {
   var classes = ["rocket", "ice", "blackroad", "stairs", "mud", "stop"];
-  var randomClass = Math.floor(Math.random() * classes.length);
-  this.obstacleClass = classes[randomClass];
-};
-
-Obstacle.prototype.generateObstacle = function() {
-return Math.floor((Math.random() * 520) + 78);
-};
-
-Obstacle.prototype.addObstacle = function(id, road) {
+  var background = ['rocket.png', 'ice.jpg', 'road.png', 'stairs.png', 'mud.jpg', 'stop.jpg'];
+  var random = Math.floor(Math.random() * classes.length);
   var newObstacle = $("<div>")
-                      .addClass("object")
-                      .attr('id', 'obstacle'+id)
-                      .addClass(this.obstacleClass).css({
-                        //background-image con url
-                        // clase de esa image
-                        "background": this.background[this.aleas],
-                        "background-size": "cover",
-                        top: this.x,
-                        left: this.y
-                      });
-  $(road).append(newObstacle);
+    .addClass(classes[random])
+    .css({
+      "left": this.x, //limitbike2 -limitbike1) + limitbike1)
+      "top": this.y,
+      "width": this.width,
+      "height": this.height,
+      "background-size": "cover",
+      "background-image": 'url("./images/' +background[random] + '")',
+      "position": "absolute",
+      "z-index": "1"
+    });
+  return newObstacle;
+};
+
+Obstacle.prototype.move = function() {
+  this.y += this.ySpeed;
+  this.element.css({
+    top:this.y,
+    left:this.x
+  });
 };
