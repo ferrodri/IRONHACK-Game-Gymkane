@@ -8,3 +8,6 @@ setInterval(function() {
 // setInterval(function() {
 //   r2.updateObstacles(r2.yObstacleSpeed);
 // }, 1000 * 0.2);
+
+var soundGame = new Audio ("./sounds/france.mp3");
+soundGame.play();

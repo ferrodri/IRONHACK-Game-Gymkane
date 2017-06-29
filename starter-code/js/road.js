@@ -53,10 +53,10 @@ Road.prototype.updateObstacles = function(obstacleSpeed) {
 Road.prototype.obstacleLoopCreator = function() {
   var that = this;
   var intervalCreator = setInterval(function() {
-    if(that.obstacles.length<10){
+    if (that.obstacles.length < 10) {
       that.createObstacles();
-    } else if(that.obstacles.length===10){ //&& ($("#" + this.roadName + " :last").hasClass("bike"))
-    console.log("you win");
+    } else if (that.obstacles.length === 10) { //&& ($("#" + this.roadName + " :last").hasClass("bike"))
+      console.log("you win");
     }
   }, 1500);
 };
@@ -73,32 +73,43 @@ Road.prototype.collision = function() {
       switch (this.obstacles[i].element.attr("class")) {
         case "rocket":
           this.obstacles[i].element.remove();
-          this.yObstacleSpeed = this.height/8.8;
+          this.yObstacleSpeed = this.height / 8.8;
+          var soundRocket = new Audio("./sounds/rocket.mp3");
+          soundRocket.play();
           break;
         case "ice":
-          this.yObstacleSpeed = this.height/11;
+          this.yObstacleSpeed = this.height / 11;
           this.obstacles[i].element.remove();
+          var soundIce = new Audio("./sounds/ice.mp3");
+          soundIce.play();
           break;
         case "blackroad":
-          this.yObstacleSpeed = this.height/17.6;
+          this.yObstacleSpeed = this.height / 17.6;
           this.obstacles[i].element.remove();
+          var soundRoad = new Audio("./sounds/road.mp3");
+          soundRoad.play();
           break;
         case "stairs":
-          this.yObstacleSpeed = this.height/22;
+          this.yObstacleSpeed = this.height / 22;
           this.obstacles[i].element.remove();
+          var soundStairs = new Audio("./sounds/stairs.mp3");
+          soundStairs.play();
           break;
         case "mud":
-          this.yObstacleSpeed = this.height/44;
+          this.yObstacleSpeed = this.height / 44;
           this.obstacles[i].element.remove();
+          var soundMud = new Audio("./sounds/mud.mp3");
+          soundMud.play();
           break;
         case "stop":
-          this.yObstacleSpeed = this.height/88;
+          this.yObstacleSpeed = this.height / 88;
           this.obstacles[i].element.remove();
+          var soundStop = new Audio("./sounds/stop.mp3");
+          soundStop.play();
           break;
       }
     } else if (this.obstacles[i].y > (this.biker.y + this.biker.height)) {
       this.obstacles[i].element.remove();
-      // this.obstacles.shift();
     }
   }
 };
