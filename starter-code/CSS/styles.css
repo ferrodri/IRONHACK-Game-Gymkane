@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Frijole');
 
+@keyframes animatedBackground {
+	to { background-position: 0 100%; }
+}
+
 body{
   margin: 0;
   background-image: url(../images/background.jpg);

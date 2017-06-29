@@ -1,11 +1,10 @@
 function Obstacle(roadWidth, roadHeight, road) {
+  this.x = Math.floor((Math.random() * (roadWidth / 11) * 11 * 6.4 / 9) + (roadWidth / 11) * 11 / 9);    //limitbike2 -limitbike1) + limitbike1)
+  this.y = -(roadHeight / 11);
   this.width = roadWidth / 11;
   this.height = roadHeight / 11;
   this.road = road;
   this.element = this.createObstacle();
-  this.x = Math.floor((Math.random() * 600));
-  this.y = -this.height;
-  this.ySpeed = 100/30;
 }
 
 Obstacle.prototype.createObstacle = function() {
@@ -15,10 +14,11 @@ Obstacle.prototype.createObstacle = function() {
   var newObstacle = $("<div>")
     .addClass(classes[random])
     .css({
-      "left": this.x, //limitbike2 -limitbike1) + limitbike1)
+      "left": this.x,
       "top": this.y,
       "width": this.width,
       "height": this.height,
+      "transition": "top " + "0.2s" + " linear", //igual a tiempo setInterval game
       "background-size": "cover",
       "background-image": 'url("./images/' +background[random] + '")',
       "position": "absolute",
@@ -27,8 +27,8 @@ Obstacle.prototype.createObstacle = function() {
   return newObstacle;
 };
 
-Obstacle.prototype.move = function() {
-  this.y += this.ySpeed;
+Obstacle.prototype.move = function(obstacleSpeed) {
+  this.y += obstacleSpeed;
   this.element.css({
     top:this.y,
     left:this.x
