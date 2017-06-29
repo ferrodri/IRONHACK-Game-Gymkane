@@ -1,4 +1,4 @@
-function Road(width, height, x, y, leftKey, rightKey, roadName) {
+function Road(width, height, x, y, leftKey, rightKey, obstaclesNum, roadName) {
   this.width = width;
   this.height = height;
   this.roadName = "road" + roadName;
@@ -8,7 +8,7 @@ function Road(width, height, x, y, leftKey, rightKey, roadName) {
   this.biker = null;
   this.createBike(leftKey, rightKey);
   this.obstacles = [];
-  this.obstacleLoopCreator();
+  this.obstacleLoopCreator(obstaclesNum);
   this.yObstacleSpeed = height / 22;
 }
 
@@ -50,13 +50,14 @@ Road.prototype.updateObstacles = function(obstacleSpeed) {
   this.collision();
 };
 
-Road.prototype.obstacleLoopCreator = function() {
+Road.prototype.obstacleLoopCreator = function(obstaclesNum) {
   var that = this;
   var intervalCreator = setInterval(function() {
-    if (that.obstacles.length < 10) {
+    if (that.obstacles.length < obstaclesNum) {
       that.createObstacles();
-    } else if (that.obstacles.length === 10) { //&& ($("#" + this.roadName + " :last").hasClass("bike"))
-      console.log("you win");
+    } else if ((that.obstacles.length === obstaclesNum) && (that.obstacles[obstaclesNum-1].y > (that.biker.y + that.biker.height))) {
+      clearInterval(intervalCreator);
+      console.log("you win"); //meter css you win aqui
     }
   }, 1500);
 };
