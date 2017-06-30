@@ -74,8 +74,12 @@ Road.prototype.obstacleLoopCreator = function(obstaclesNum) {
       that.roadEL.append(that.winner);
       numberWinner ++;
       if(numberWinner === 1) {
+      var soundWinner = new Audio("./sounds/winner.mp3");
+      soundWinner.play();
       that.winner.text( "You are the winner!" );
     }else if(numberWinner > 1){
+      var soundLoser = new Audio("./sounds/loser.mp3");
+      soundLoser.play();
       that.winner.text( "You are the loser, buhh!" );
     }
   }
@@ -180,7 +184,7 @@ Road.prototype.winnerShow = function() {
       "position": "absolute",
       "border": "5px orange solid",
       "border-radius": this.width / 4,
-      "font-size": this.height / 50,
+      "font-size": this.height / 35,
       "box-sizing": "border-box",
       "font-family": "Frijole",
       "text-align": "center",

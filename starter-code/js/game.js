@@ -1,5 +1,5 @@
 var numberWinner = 0;
-var obstaclesNum = 40;
+var obstaclesNum = 5; //40
 var obstaclesCounter = obstaclesNum;
 
 $("#start").click(function() {
