@@ -1,10 +1,10 @@
 var numberWinner = 0;
-var obstaclesNum = 40; 
+var obstaclesNum = 20;
 var obstaclesCounter = obstaclesNum;
 
 $("#start").click(function() {
 
-  $("#start").remove();
+  $("#initial-container").remove();
 
   var r1 = new Road(700, 740, 20, 50, "Fernando", "first"); //(width, height, x, y, leftKey, rightKey, playerName, roadName)
   var r2 = new Road(700, 740, 761, 50, "Andrei", "second");
