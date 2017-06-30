@@ -17,3 +17,16 @@ h1{
   text-align: center;
   background-color: white;
 }
+
+#start{
+	color: black;
+	font-size: 45px;
+	font-family: "Frijole";
+	text-align: center;
+	background-color: white;
+	margin-top: 300px;
+	margin-left: 40vw;
+	width: 20vw;
+	border: 10px solid black;
+
+}

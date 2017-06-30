@@ -24,6 +24,7 @@ Obstacle.prototype.createObstacle = function() {
       "position": "absolute",
       "z-index": "1"
     });
+  obstaclesCounter -= 0.5;
   return newObstacle;
 };
 
