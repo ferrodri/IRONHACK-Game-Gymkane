@@ -10,6 +10,7 @@ function Road(width, height, x, y, leftKey, rightKey, obstaclesNum, roadName) {
   this.obstacles = [];
   this.obstacleLoopCreator(obstaclesNum);
   this.yObstacleSpeed = height / 22;
+  this.winner = this.winnerShow();
 }
 
 Road.prototype.renderRoad = function() {
@@ -55,9 +56,15 @@ Road.prototype.obstacleLoopCreator = function(obstaclesNum) {
   var intervalCreator = setInterval(function() {
     if (that.obstacles.length < obstaclesNum) {
       that.createObstacles();
-    } else if ((that.obstacles.length === obstaclesNum) && (that.obstacles[obstaclesNum-1].y > (that.biker.y + that.biker.height))) {
+    } else if ((that.obstacles.length === obstaclesNum) && (that.obstacles[obstaclesNum - 1].y > (that.biker.y + that.biker.height))) {
       clearInterval(intervalCreator);
-      console.log("you win"); //meter css you win aqui
+      that.roadEL.append(that.winner);
+      numberWinner ++;
+      if(numberWinner === 1) {
+      that.winner.text( "You are the winner!" );
+    }else if(numberWinner > 1){
+      that.winner.text( "You are the loser, buhh!" );
+    }
     }
   }, 1500);
 };
@@ -113,4 +120,27 @@ Road.prototype.collision = function() {
       this.obstacles[i].element.remove();
     }
   }
+};
+
+//    .text( "You are the winner!" )
+
+Road.prototype.winnerShow = function() {
+  var winner = $("<div>")
+    .addClass("winner")
+    .css({
+      "left": this.width / 3,
+      "top": this.height / 3,
+      "width": this.width / 3,
+      "height": this.height / 3,
+      "background-color": "yellow",
+      "position": "absolute",
+      "border": "5px orange solid",
+      "border-radius": this.width / 4,
+      "font-size": this.height / 35,
+      "box-sizing": "border-box",
+      "font-family": "Frijole",
+      "text-align": "center",
+      "padding-top": this.height / 8.5
+    });
+  return winner;
 };
