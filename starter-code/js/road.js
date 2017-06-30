@@ -69,8 +69,6 @@ Road.prototype.obstacleLoopCreator = function(obstaclesNum) {
   var intervalCreator = setInterval(function() {
     if (that.obstacles.length < obstaclesNum) {
       that.createObstacles();
-    } else if ((that.obstacles[i].y > (that.biker.y + that.biker.height))) {
-      obstaclesCounter ++;
     } else if ((that.obstacles.length === obstaclesNum) && (that.obstacles[obstaclesNum - 1].y > (that.biker.y + that.biker.height))) {
       clearInterval(intervalCreator);
       that.roadEL.append(that.winner);
@@ -80,8 +78,8 @@ Road.prototype.obstacleLoopCreator = function(obstaclesNum) {
     }else if(numberWinner > 1){
       that.winner.text( "You are the loser, buhh!" );
     }
-    }
-  }, 1500);
+  }
+}, 1500);
 };
 
 Road.prototype.createObstacles = function() {
