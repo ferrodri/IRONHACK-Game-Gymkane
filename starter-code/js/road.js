@@ -1,4 +1,4 @@
-function Road(width, height, x, y, leftKey, rightKey, obstaclesNum, roadName) {
+function Road(width, height, x, y, obstaclesNum, roadName) {
   this.width = width;
   this.height = height;
   this.roadName = "road" + roadName;
@@ -6,7 +6,7 @@ function Road(width, height, x, y, leftKey, rightKey, obstaclesNum, roadName) {
   this.y = y + 80; //después de esto iría un this.RoadEL pero lo metemos en renderRoad() porque es lo primero que llamamos
   this.renderRoad(roadName);
   this.biker = null;
-  this.createBike(leftKey, rightKey);
+  this.createBike();
   this.obstacles = [];
   this.obstacleLoopCreator(obstaclesNum);
   this.yObstacleSpeed = height / 22;
@@ -38,10 +38,14 @@ Road.prototype.renderRoad = function() {
   });
 };
 
-Road.prototype.createBike = function(leftKey, rightKey) {
-  var bike = new Bike(this.width, this.height, leftKey, rightKey);
+Road.prototype.createBike = function() {
+  var bike = new Bike(this.width, this.height);
   this.roadEL.append(bike.element);
   this.biker = bike;
+};
+
+Road.prototype.updateBike = function(leftKey, rightKey) {
+  this.biker.move(leftKey, rightKey);
 };
 
 Road.prototype.updateObstacles = function(obstacleSpeed) {
@@ -121,8 +125,6 @@ Road.prototype.collision = function() {
     }
   }
 };
-
-//    .text( "You are the winner!" )
 
 Road.prototype.winnerShow = function() {
   var winner = $("<div>")

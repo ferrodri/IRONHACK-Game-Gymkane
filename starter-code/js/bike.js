@@ -1,10 +1,10 @@
-function Bike(roadWidth, roadHeight, leftKey, rightKey) {
+function Bike(roadWidth, roadHeight) {
   this.width = roadWidth / 5;
   this.height = roadHeight / 7;
   this.x = roadWidth / 2 - this.width / 2;
   this.y = roadHeight - this.height;
   this.element = this.startPosition();
-  this.move(leftKey, rightKey);
+  // this.move(leftKey, rightKey);
 }
 
 Bike.prototype.startPosition = function() {
@@ -24,18 +24,15 @@ Bike.prototype.startPosition = function() {
 };
 
 Bike.prototype.move = function(leftKey, rightKey) {
-  var that = this;
-  $(document).on('keydown', function() {
-    if ((event.keyCode === leftKey) && (that.x > that.width * 5 / 9)) {
-        that.element.css({
+    if ((keys[leftKey]) && (this.x > this.width * 5 / 9)) {
+        this.element.css({
           "transition": "left 0.1s linear",
-          "left": that.x -= that.width * 5 / 21 //left//
+          "left": this.x -= this.width * 5 / 21 //left//
         });
-    } else if ((event.keyCode === rightKey) && (that.x < (that.width * 5 - (that.width * 5 / 9) - that.width)))  {
-      that.element.css({
+    } else if ((keys[rightKey]) && (this.x < (this.width * 5 - (this.width * 5 / 9) - this.width)))  {
+      this.element.css({
         "transition": "left 0.1s linear",
-        "left": that.x += that.width * 5 / 21 //right//
+        "left": this.x += this.width * 5 / 21 //right//
       });
     }
-  });
 };
